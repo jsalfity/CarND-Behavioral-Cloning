@@ -21,6 +21,15 @@ app = Flask(__name__)
 model = None
 prev_image_array = None
 
+import cv2
+
+def random_brightness(image):
+    # Apply random brightness to image
+    bright_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    bright_image = cv2.cvtColor(bright_image,cv2.COLOR_RGB2HSV)
+    bright_image[:,:,2] = bright_image[:,:,2]*(.25+np.random.uniform())
+    bright_image= cv2.cvtColor(bright_image,cv2.COLOR_HSV2RGB)
+    return bright_image
 
 class SimplePIController:
     def __init__(self, Kp, Ki):
@@ -44,12 +53,14 @@ class SimplePIController:
 
 
 controller = SimplePIController(0.1, 0.002)
-set_speed = 9
+
+set_speed = 25
 controller.set_desired(set_speed)
 
 
 @sio.on('telemetry')
 def telemetry(sid, data):
+    image_size = 64
     if data:
         # The current steering angle of the car
         steering_angle = data["steering_angle"]
@@ -61,6 +72,14 @@ def telemetry(sid, data):
         imgString = data["image"]
         image = Image.open(BytesIO(base64.b64decode(imgString)))
         image_array = np.asarray(image)
+        shape = image_array.shape
+
+        #to match processed images
+        #image_array = image_array[int(shape[0] * 0.2):int(shape[0] * 0.80), 0:shape[1]] 
+        image_array = image_array[int(shape[0]*0.40):int(shape[0]*0.85), 0:shape[1]]
+        image_array = cv2.resize(image_array, (image_size, image_size))
+        image_array = random_brightness(image_array)
+        
         steering_angle = float(model.predict(image_array[None, :, :, :], batch_size=1))
 
         throttle = controller.update(float(speed))
