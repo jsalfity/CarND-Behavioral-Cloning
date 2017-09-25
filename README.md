@@ -72,7 +72,7 @@ Cropped and Resized Right Camera Image: ![alt text][crop_resize_right]
 
 
 #### Match with drive.py
-The same cropping and resizing was performed in `drive.py`, lines 79-80 , the python file which runs the trained model through the simulator.
+The same cropping and resizing was performed in `drive.py`, line 86, the python file which runs the trained model through the simulator.
 
 
 ### Data Augmentation (During Training)
