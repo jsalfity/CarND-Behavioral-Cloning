@@ -84,13 +84,8 @@ def telemetry(sid, data):
 
         #to match processed images
         image_array = crop_resize(image_array,64)
-
-        #image_array = image_array[int(shape[0] * 0.2):int(shape[0] * 0.80), 0:shape[1]] 
-        #image_array = image_array[int(shape[0]*0.40):int(shape[0]*0.85), 0:shape[1]]
-        #image_array = cv2.resize(image_array, (image_size, image_size))
-        
+   
         steering_angle = float(model.predict(image_array[None, :, :, :], batch_size=1))
-
         throttle = controller.update(float(speed))
 
         print(steering_angle, throttle)
