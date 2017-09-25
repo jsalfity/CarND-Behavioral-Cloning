@@ -27,7 +27,7 @@
 [bright_right]: ./image_references/bright_r.jpg "bright_right"
 
 
-[tf_output]: ./image_references/tf_output.png "tf_output"
+[tf_output]: ./image_references/tf_output.PNG "tf_output"
 
 ## Introduction
 The goal of this project was to explore the Behavioral Cloning techniques within Deep Learning. Behavioral Cloning refers to adopting existing Deep Neural Network architecture for use in a similar but slightly different purpose than the network was originally designed for. The objective of this project is to adopt and fine tune a Deep Neural Network to train a simulated car to drive autonomously around a simulated track. 
