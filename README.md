@@ -1,7 +1,7 @@
 # Project 3: Behavioral Cloning Project
 
 [//]: # (Image References)
-[nvidiaCNN]: ./image_references/nvidia_model_CNN.png "nvidiaCNN"
+[nvidiaCNN]: ./image_references/nvidia_model_CNN.PNG "nvidiaCNN"
 [left]: ./image_references/original_l.jpg "left"
 [center]: ./image_references/original_c.jpg "center"
 [right]: ./image_references/original_r.jpg "right"
