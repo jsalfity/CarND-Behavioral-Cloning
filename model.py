@@ -57,7 +57,7 @@ def NVIDIA_model():
     model = Sequential()
 
     # Lambda Layer
-    model.add(Lambda(lambda x: x / 127.5 - 1., input_shape=(64, 64, 3)))
+    model.add(Lambda(lambda x: x / 127.5 - 1., input_shape=(100, 100, 3)))
 
     model.add(Convolution2D(3, 1, 1))
 
@@ -179,8 +179,8 @@ def main():
 
     threshold = 1
     batch_size = 256
-    n_train_epochs = 6
-    image_size = 64
+    n_train_epochs = 8
+    image_size = 100
 
     for i_pr in range(n_train_epochs):
         # Obtain training and validation generators and use fit_generator to test data. Incrementally reduce threshold to eliminate
@@ -195,7 +195,7 @@ def main():
     # with open('model.json', 'w') as outfile:
     #      json.dump(json_string, outfile)
 
-    model.save("modelNVIDIA_4.h5")
+    model.save("model_1.h5")
     print("model saved")
     pass
 

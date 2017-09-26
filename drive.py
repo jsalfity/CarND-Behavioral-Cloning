@@ -54,7 +54,7 @@ class SimplePIController:
 
 controller = SimplePIController(0.1, 0.002)
 
-set_speed = 25
+set_speed = 15
 controller.set_desired(set_speed)
 
 ## PROCESSING IMAGES
@@ -63,12 +63,13 @@ def crop_resize(image, image_size):
     shape = image.shape
     # image = image[int(shape[0] * 0.2):int(shape[0] * 0.80), 0:shape[1]]
     image = image[int(shape[0]*0.40):int(shape[0]*0.85), 0:shape[1]]
+    #image = image[int(shape[0]*0.30):int(shape[0]*0.85), 0:shape[1]]
     image = cv2.resize(image, (image_size, image_size), interpolation=cv2.INTER_AREA)
     return image
 
 @sio.on('telemetry')
 def telemetry(sid, data):
-    image_size = 64
+    image_size = 100
     if data:
         # The current steering angle of the car
         steering_angle = data["steering_angle"]
@@ -83,7 +84,7 @@ def telemetry(sid, data):
         shape = image_array.shape
 
         #to match processed images
-        image_array = crop_resize(image_array,64)
+        image_array = crop_resize(image_array,image_size)
    
         steering_angle = float(model.predict(image_array[None, :, :, :], batch_size=1))
         throttle = controller.update(float(speed))

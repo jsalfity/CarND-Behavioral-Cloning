@@ -27,7 +27,7 @@
 [bright_right]: ./image_references/bright_r.jpg "bright_right"
 
 
-[tf_output]: ./image_references/tf_output.PNG "tf_output"
+[tf_output]: ./image_references/tf_output_1.PNG "tf_output"
 
 ## Introduction
 The goal of this project was to explore the Behavioral Cloning techniques within Deep Learning. Behavioral Cloning refers to adopting existing Deep Neural Network architecture for use in a similar but slightly different purpose than the network was originally designed for. The objective of this project is to adopt and fine tune a Deep Neural Network to train a simulated car to drive autonomously around a simulated track. 
@@ -62,7 +62,7 @@ Cropped Center Camera Image: ![alt text][cropped_center]
 Cropped Right Camera Image: ![alt text][cropped_right]
 
 #### Resize Images
-The images were then resized to 64x64 dimension. By making the image smaller, the DNN will learn a smaller number of feature and feature relationships. This is quite the art in DNN, as the image feature recognizer needs to be good enough to work, but larger images will lead the training to be very time consuming.
+The images were then resized to 100x100 dimension. By making the image smaller, the DNN will learn a smaller number of feature and feature relationships. This is quite the art in DNN, as the image feature recognizer needs to be good enough to work, but larger images will lead the training to be very time consuming.
 
 Cropped and Resized Left Camera Image: ![alt text][crop_resize_left] 
 
@@ -129,7 +129,7 @@ The inspiration for my model was from the NVIDIA End to End Learning for Self Dr
 
 ![alt text][nvidiaCNN]
 
-The input NVIDIA used is 66x200x3 RGB colored images with an output of the inverse of steering angle. The input to this project's network is 64x64x3 RGB colored image with the a single neuron output of steering angle. Three 5x5 convolution layers, followed by three 3x3 convolution layers, followed by 4 fully connected layers were implemented in this project. Sub-sampling or max pooling was used within each convolution. The activation function used in each neuron is RELU. Dropout of 50% was used after each set of convolutions and within each fully connected layer to combat over fitting. The Adam optimizer was chosen with default parameters and the chosen loss function was mean squared error (MSE). 
+The input NVIDIA used is 66x200x3 RGB colored images with an output of the inverse of steering angle. The input to this project's network is 100x100x3 RGB colored image with the a single neuron output of steering angle. Three 5x5 convolution layers, followed by three 3x3 convolution layers, followed by 4 fully connected layers were implemented in this project. Sub-sampling or max pooling was used within each convolution. The activation function used in each neuron is RELU. Dropout of 50% was used after each set of convolutions and within each fully connected layer to combat over fitting. The Adam optimizer was chosen with default parameters and the chosen loss function was mean squared error (MSE). 
 ```
 def NVIDIA_model():
  
@@ -176,7 +176,7 @@ def NVIDIA_model():
 ```
 
 ### Model Training
-The model was built using keras and used an Adam Optimizer with 1e-4 learning rate. The model is trained on 6 epochs with 50,000 samples per epoch, with a batch size of 250. Loss is computed as mean_squared_error. The advantage of using mean_absolute_error is that it gives a real representation of how far off your predicted values are from the targeted values. 
+The model was built using keras and used an Adam Optimizer with 1e-4 learning rate. The model is trained on 8 epochs with 50,000 samples per epoch, with a batch size of 250. Loss is computed as mean_squared_error. The advantage of using mean_absolute_error is that it gives a real representation of how far off your predicted values are from the targeted values. 
 
 ## Performance
 The model performed  well, as the car was able to continuously drive around the track. The final validation loss was 0.0681. The final mean_absolute_error of validation was 0.2138. Both of these values were very close to the final training values, which lead us to believe that our model was well equipped in predicting correct steering angles for the track.
