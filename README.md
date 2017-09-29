@@ -78,7 +78,7 @@ The same cropping and resizing was performed in `drive.py`, line 86, the python 
 ### Data Augmentation (During Training)
 
 #### Flipping Images
-The training course has a large bias of left hand turns. In an attempt to remove the bias of left hand driving, during training, the images were randomly flipped around the middle of the image if the steering angle was not zero. The steering angle was also negated. Note: Although the flipped images are of the original images, the cropped and downsized 64x64 images were flipped during training.
+The training course has a large bias of left hand turns. In an attempt to remove the bias of left hand driving, during training, the images were randomly flipped around the middle of the image if the steering angle was not zero. The steering angle was also negated. Note: Although the flipped images are of the original images, the cropped and downsized 100x100 images were flipped during training.
 
 Flipped Left Camera Image: ![alt text][flipped_left] 
 
