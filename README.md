@@ -186,3 +186,8 @@ The model performed  well, as the car was able to continuously drive around the 
 To run the model, activate the simulator and run:
 
 `python drive.py model.py`
+
+## YouTube
+Watch my car drive on my [youtube](<https://youtu.be/Lo5JOjMQfMw>) channel. 
+
+
